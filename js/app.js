@@ -27,7 +27,7 @@ Enemy.prototype.render = function() {
 let Player = function (x, y) {
   this.x = x;
   this.y = y;
-  this.player = 'images/char-boy.png';
+  this.player = 'images/char-princess-girl.png';
 }
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -39,11 +39,31 @@ Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.player), this.x, this.y);
 };
 
+Player.prototype.handleInput = function (keypress) {
+  if ((this.x >= 0 && this.x <= 404) && (this.y >= -10 && this.y <= 322)){
+    switch (keypress) {
+      case 'left':
+        this.x -= 101;
+        break;
+      case 'right':
+        this.x += 101;
+        break;
+      case 'up':
+        this.y -= 83;
+        break;
+      case 'down':
+        this.y += 83;
+        break;
+      default:
+        alert('use the arrow keys to move the player');
+    }
+  }
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 let allEnemies = [];
 // Place the player object in a variable called player
-let player = new Player ();
+let player = new Player (202, 405);
 
 
 
