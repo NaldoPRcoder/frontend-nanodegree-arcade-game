@@ -15,7 +15,12 @@ var Enemy = function(x, y, speed) {
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
-    // all computers.
+    // all computers..
+    this.x += this.speed * dt;
+    if (this.x > 480) {
+      this.x = -80;
+      this.speed = 50 + Math.floor(Math.random() * 350);
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -40,28 +45,42 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function (keypress) {
-  if ((this.x >= 0 && this.x <= 404) && (this.y >= -10 && this.y <= 322)){
     switch (keypress) {
       case 'left':
-        this.x -= 101;
+        if (this.x > 0) {
+          this.x -= 101;
+        }
         break;
       case 'right':
-        this.x += 101;
+        if (this.x < 404) {
+          this.x += 101;
+        }
         break;
       case 'up':
-        this.y -= 83;
+        if (this.y > -10) {
+            this.y -= 83;
+        }
         break;
       case 'down':
-        this.y += 83;
+        if (this.y < 405) {
+          this.y += 83;
+        }
         break;
       default:
         alert('use the arrow keys to move the player');
     }
-  }
-};
+
+    console.log(this.x);
+    console.log(this.y);
+  };
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-let allEnemies = [];
+let enemy1 = new Enemy (0, 73, Math.floor(Math.random()*300));
+let enemy2 = new Enemy (0, 156, Math.floor(Math.random()*300));
+let enemy3 = new Enemy (0, 239, Math.floor(Math.random()*300));
+let allEnemies = [enemy1, enemy2, enemy3];
+
 // Place the player object in a variable called player
 let player = new Player (202, 405);
 
