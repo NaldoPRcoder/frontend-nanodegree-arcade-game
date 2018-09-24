@@ -81,6 +81,14 @@ var Engine = (function(global) {
         updateEntities(dt);
         // checkCollisions();
     }
+    function checkCollisions() {
+    for ( i = 0; i < allEnemies.length; i++) {
+      if ((allEnemies[i].x - player.x) === 86) {
+          player.x = 202;
+          player.y = 405;
+        }
+      }
+    };
 
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls

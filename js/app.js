@@ -20,7 +20,12 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 480) {
       this.x = -80;
       this.speed = 50 + Math.floor(Math.random() * 350);
-    }
+    };
+    if (player.x < this.x + 75 && player.x + 75 > this.x && player.y < this.y + 75 && 75 + player.y > this.y) {
+      player.x = 202;
+      player.y = 405;
+    };
+
 };
 
 // Draw the enemy on the screen, required method for game
@@ -69,9 +74,14 @@ Player.prototype.handleInput = function (keypress) {
       default:
         alert('use the arrow keys to move the player');
     }
-
     console.log(this.x);
     console.log(this.y);
+    if (this.y === -10) {
+      setTimeout(function() {
+        player.x = 202;
+        player.y = 405;
+      }, 1000);
+    }
   };
 
 // Now instantiate your objects.
