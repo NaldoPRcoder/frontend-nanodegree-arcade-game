@@ -6,18 +6,20 @@ body {
   position: absolute;
   width: 505px;
   height: 550px;
-  display:flex;
+  /* display:run-in; */
 }
 
-.layer {
+/*.layer {
   background-color: rgba(245, 245, 245, 0.7);
   position:absolute;
   top: 45px;
-  left: 507px;
+  left: 346px;
   width:505px;
   height: 550px;
-}
+  visibility: visible;
+}*/
 
-h1 {
+.win {
   padding: 200px 0;
+  visibility: hidden ;
 }

@@ -13,14 +13,15 @@ var Enemy = function(x, y, speed) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
+    // The dt parameter will ensure the game runs at the same speed for
     // all computers..
     this.x += this.speed * dt;
     if (this.x > 480) {
       this.x = -80;
       this.speed = 50 + Math.floor(Math.random() * 350);
     };
+    /*Collision algorithm from:
+    /*https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection#Axis-Aligned_Bounding_Box*/
     if (player.x < this.x + 75 && player.x + 75 > this.x && player.y < this.y + 75 && 75 + player.y > this.y) {
       player.x = 202;
       player.y = 405;
@@ -48,7 +49,7 @@ Player.prototype.update = function(dt) {
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.player), this.x, this.y);
 };
-
+/*keyboard integration places player inthe middle of the tile*/
 Player.prototype.handleInput = function (keypress) {
     switch (keypress) {
       case 'left':
@@ -74,11 +75,15 @@ Player.prototype.handleInput = function (keypress) {
       default:
         alert('use the arrow keys to move the player');
     }
-    console.log(this.x);
-    console.log(this.y);
+    // console.log(this.x);
+    // console.log(this.y);
+    /*when the player wins, reset the player position to the begining
+    and lets you know the player won*/
     if (this.y === -10) {
-
+      let win = document.querySelector('h1');
+      win.style.visibility = "visible";
       setTimeout(function() {
+        win.style.visibility = "hidden";
         player.x = 202;
         player.y = 405;
       }, 1000);
