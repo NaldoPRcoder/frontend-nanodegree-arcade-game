@@ -6,13 +6,18 @@ body {
   position: absolute;
   width: 505px;
   height: 550px;
+  display:flex;
 }
 
 .layer {
   background-color: rgba(245, 245, 245, 0.7);
   position:absolute;
   top: 45px;
-  left: 245px;
+  left: 507px;
   width:505px;
   height: 550px;
+}
+
+h1 {
+  padding: 200px 0;
 }

@@ -77,6 +77,7 @@ Player.prototype.handleInput = function (keypress) {
     console.log(this.x);
     console.log(this.y);
     if (this.y === -10) {
+
       setTimeout(function() {
         player.x = 202;
         player.y = 405;
